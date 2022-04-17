@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="BDSuggestion.View.PageCadDepart" Title="Departamentos">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Departamentos de sugestões" 
+                       TextColor="{DynamicResource FundoDark}" 
+                       FontAttributes="Bold"  
+                       FontSize="30" />
+                <Label Text="Departamentos existentes: " 
+                       FontSize="18" 
+                       Grid.Row="1"/>
+                <StackLayout Grid.Row="2">
+
+                    <FlexLayout x:Name="FlexDepart" 
+                                BindableLayout.ItemsSource="{Binding}" 
+                                Wrap="Wrap" JustifyContent="Start" 
+                                AlignItems="Start">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="10,1" 
+                                       Margin="5" 
+                                       CornerRadius="20" 
+                                       HeightRequest="25" 
+                                       HorizontalOptions="Start">
+                                    <Label Text="{Binding Departamento.Nome}" 
+                                           FontSize="13" 
+                                           FontAttributes="Bold" 
+                                           VerticalTextAlignment="Center" 
+                                           TextColor="{DynamicResource colorAccent4}" 
+                                           LineBreakMode="NoWrap"/>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </StackLayout>
+                <StackLayout  VerticalOptions="CenterAndExpand" 
+                              Grid.Row="3"
+                              HorizontalOptions="CenterAndExpand" 
+                              Margin="0,-100,0,0">
+                    <Label Text="Nome do departamento" 
+                           FontSize="20" 
+                           HorizontalTextAlignment="Center" 
+                           TextColor="{DynamicResource FundoDark}"/>
+                    <Frame Padding="10,0" 
+                           HeightRequest="40" 
+                           CornerRadius="30" 
+                           BackgroundColor="{DynamicResource Plano}">
+                        <Entry WidthRequest="250" 
+                               Text="{Binding Departamento.Nome}"/>
+                    </Frame>
+                </StackLayout>
+                <Button Text="Salvar" 
+                        CornerRadius="50" 
+                        Grid.Row="4" 
+                        TextColor="White" 
+                        BackgroundColor="{DynamicResource Fundo}"
+                        Command="{Binding Add}"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

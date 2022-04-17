@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BDSuggestion.MainPage">
+
+    <ScrollView>
+        <Grid RowSpacing="0" Margin="0" Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+              
+            </Grid.RowDefinitions>
+            <Frame Padding="40,30,40,40" HeightRequest="200">
+                <Frame.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="{DynamicResource Fundo}"  Offset="0.1" />
+                        <GradientStop Color="{DynamicResource FundoDark}" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Frame.Background>
+                <Label Text="Banco de sugestões"  VerticalOptions="Center" HorizontalOptions="Center" 
+               FontSize="32" FontAttributes="Bold" TextColor="White"/>
+            </Frame>
+            <BoxView CornerRadius="30,30,0,0" BackgroundColor="White" Grid.Row="1" Grid.RowSpan="3" Margin="0,-50,0,0"/>
+
+            <Label FontSize="30" TextColor="Black" HorizontalTextAlignment="Center" Margin="40,10,40,0" Grid.Row="1" 
+               VerticalOptions="Start" HorizontalOptions="Center" >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Suas "/>
+                            <Span Text="ideias" FontSize="32" FontAttributes="Bold" TextColor="{DynamicResource colorAccent4}"/>
+                            <Span Text=" e "/>
+                            <Span Text="sugestões " FontSize="32" FontAttributes="Bold" TextColor="{DynamicResource colorAccent4}"/>
+                            <Span Text="nos ajudará a melhorar cada vez mais!"/>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <Frame Padding="10,0"
+               HeightRequest="45" 
+               CornerRadius="30" 
+               Grid.Row="2"
+               VerticalOptions="Center"
+               Margin="40,0"
+               BackgroundColor="{DynamicResource Plano}">
+                <Entry x:Name="EntryColaborador"
+                   WidthRequest="250" 
+                   Placeholder="Informe seu nome"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   PlaceholderColor="{DynamicResource FundoDark}"
+                   TextColor="{DynamicResource FundoDark}"/>
+            </Frame>
+
+            <Button Text="Entrar" Grid.Row="3" Margin="30,10,30,20" FontAttributes="Bold" HorizontalOptions="Center" WidthRequest="300" 
+                FontSize="20" TextColor="White" CornerRadius="20" BackgroundColor="{DynamicResource Fundo}"
+                Clicked="BtnEntrar_Clicked"/>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

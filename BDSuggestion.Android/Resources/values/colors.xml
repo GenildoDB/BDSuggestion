@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="launcher_background">#FFFFFF</color>
+    <color name="Fundo">#5412dc</color>
+    <color name="FundoDark">#322468</color>
+    <color name="colorAccent">#9871ea</color>
+    <color name="colorAccent2">#e6f6fc</color>
+    <color name="colorAccent3">#ffab40</color>
+    
+</resources>

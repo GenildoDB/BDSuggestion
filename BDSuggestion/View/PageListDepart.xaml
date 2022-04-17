@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BDSuggestion.View.PageListDepart">
+    <ListView x:Name="MyListView"
+              HasUnevenRows="True" 
+             CachingStrategy="RecycleElement">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <SwipeView BackgroundColor="Transparent">
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem  Text="Excluir"  BackgroundColor="Red" Clicked="SwipeItemExcluir_Clicked"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem  Text="Editar"  BackgroundColor="{DynamicResource Fundo}" Clicked="SwipeItemEditar_Clicked"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Frame Padding="20,10" HasShadow="False">
+                            <Label Text="{Binding Departamento.Nome}" 
+                                   VerticalOptions="Center"
+                                   FontSize="16"
+                                   TextColor="{DynamicResource FundoDark}"/>
+                        </Frame>
+
+                    </SwipeView>
+
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

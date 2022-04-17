@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Appearing="ContentPage_Appearing"
+             x:Class="BDSuggestion.View.Home" >
+    <Grid RowSpacing="0">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Color="White"  Offset="0.1" />
+                <GradientStop Color="{DynamicResource Plano}" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <BoxView  Grid.RowSpan="2" 
+                  CornerRadius="0" 
+                  HeightRequest="110">
+            <BoxView.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource Fundo}"  Offset="0.1" />
+                    <GradientStop Color="{DynamicResource FundoDark}" Offset="1.0" />
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+        <BoxView BackgroundColor="White" 
+                 Grid.Row="1" 
+                 Grid.RowSpan="1"  
+                 CornerRadius="50,50,0,0"/>
+        <Label TextColor="White" 
+               FontSize="24" 
+               VerticalOptions="Start" 
+               VerticalTextAlignment="Start" 
+               HorizontalTextAlignment="Center" 
+               Margin="20,0,20,20" 
+               FontAttributes="Bold">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Banco de "/>
+                        <Span Text="sugestões" 
+                              FontAttributes="Bold" 
+                              FontSize="26"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <StackLayout Orientation="Vertical" 
+                     Grid.Row="1" 
+                     Margin="20,0" 
+                     Spacing="0" 
+                     VerticalOptions="Center">
+            <StackLayout.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" 
+                            Value="14"/>
+                </Style>
+            </StackLayout.Resources>
+            <StackLayout Orientation="Horizontal" 
+                         Spacing="20"
+                         Margin="20,0" >
+                <StackLayout.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="TextColor" Value="{DynamicResource FundoDark}"/>
+                        <Setter Property="FontSize" Value="14"/>
+                    </Style>
+                </StackLayout.Resources>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Sugestões  -  " FontSize="14" FontAttributes="Bold"/>
+                                <Span Text="Total: "/>
+                                <Span Text="{Binding Totais.GTotal}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Aceitas: "/>
+                                <Span Text="{Binding Totais.GAceitas}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Negadas: "/>
+                                <Span Text="{Binding Totais.GNegadas}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+        </StackLayout>
+        <Label FontSize="12" 
+               Grid.Row="2" 
+               Margin="30,5">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Legenda -  "/>
+                        <Span Text="Aceito: "/>
+                        <Span Text="●   " TextColor="ForestGreen" FontSize="15"/>
+                        <Span Text="Aguardando: "/>
+                        <Span Text="●   " TextColor="Orange" FontSize="15"/>
+                        <Span Text="Negado: "/>
+                        <Span Text="●   " TextColor="Red" FontSize="15"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Picker Title="Filtrar" 
+                Margin="30,0" 
+                SelectedIndexChanged="PickerFiltrar_SelectedIndexChanged" 
+                TitleColor="{DynamicResource FundoDark}" 
+                Grid.Row="3" 
+                ItemsSource="{Binding ListaDepart}"  
+                ItemDisplayBinding="{Binding Nome}" >
+        </Picker>
+        <ListView x:Name="ListViewSugestoes"
+                  Grid.Row="4" 
+                  HasUnevenRows="True" 
+                  RowHeight="65" 
+                  ItemsSource="{Binding ListaSugestao}"
+                  CachingStrategy="RecycleElement" 
+                  Header="i" 
+                  SeparatorVisibility="None" 
+                  VerticalOptions="Start" 
+                  Margin="0,0,0,5"
+                  ItemSelected="ListViewSugestoes_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid RowSpacing="0" Margin="30,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label  HorizontalTextAlignment="Start" 
+                                    Margin="5,0,0,0" 
+                                    FontSize="12" 
+                                    FontAttributes="Bold">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="{Binding Sugestao.Departamento}"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Frame Grid.Row="1"  
+                                   HeightRequest="65" 
+                                   CornerRadius="5" 
+                                   Padding="7" 
+                                   BackgroundColor="White">
+                                <Grid RowSpacing="0" 
+                                      ColumnSpacing="10" 
+                                      VerticalOptions="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.Resources>
+                                        <Style TargetType="Label">
+                                            <Setter Property="TextColor" Value="Black"/>
+                                            <Setter Property="FontSize" Value="14"/>
+                                        </Style>
+                                    </Grid.Resources>
+
+                                    <BoxView Grid.RowSpan="2" 
+                                             CornerRadius="30"  
+                                             WidthRequest="4" 
+                                             VerticalOptions="FillAndExpand"                                          
+                                             HorizontalOptions="Start" >
+                                        <BoxView.Triggers>
+                                            <DataTrigger TargetType="BoxView" Binding="{Binding Sugestao.Status}" Value="0">
+                                                <Setter Property="BackgroundColor" Value="Orange"/>
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="BoxView" Binding="{Binding Sugestao.Status}" Value="1">
+                                                <Setter Property="BackgroundColor" Value="ForestGreen"/>
+                                                <Setter Property="Background" Value="ForestGreen"/>
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="BoxView" Binding="{Binding Sugestao.Status}" Value="2">
+                                                <Setter Property="BackgroundColor" Value="Red"/>
+                                            </DataTrigger>
+                                        </BoxView.Triggers>
+                                    </BoxView>
+
+                                    <Label Grid.Column="1">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="Colab.: " FontAttributes="Bold"/>
+                                                    <Span Text="{Binding Sugestao.Colaborador}"/>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label  Grid.Column="1" 
+                                            Grid.Row="1" 
+                                            Text="{Binding Sugestao.Sugestao }" 
+                                            MaxLines="2"  
+                                            LineBreakMode="TailTruncation"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Frame BackgroundColor="{DynamicResource Fundo}" 
+               Padding="10" 
+               WidthRequest="45" 
+               HeightRequest="45" 
+               CornerRadius="50"  
+               Margin="0,0,10,40" 
+               Grid.Row="4" 
+               HorizontalOptions="End" 
+               VerticalOptions="End">
+            <Label Text="+" 
+                   VerticalTextAlignment="Center" 
+                   HorizontalTextAlignment="Center" 
+                   FontSize="34" 
+                   TextColor="White"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="AddSugestao_Tapped"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+    </Grid>
+</ContentPage>

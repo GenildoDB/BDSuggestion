@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BDSuggestion.View.PageListSugestao">
+    <StackLayout>
+        <Label Text="Sua lista de sugestões" 
+               TextColor="{DynamicResource FundoDark}" 
+               FontAttributes="Bold"  
+               FontSize="26" 
+               Margin="30,10"/>
+        <Picker Title="Filtrar" 
+                Margin="30,0" 
+                SelectedIndexChanged="PickerFiltrar_SelectedIndexChanged" 
+                TitleColor="{DynamicResource FundoDark}" 
+                Grid.Row="3" 
+                ItemsSource="{Binding ListaDepart}"  
+                ItemDisplayBinding="{Binding Nome}" >
+        </Picker>
+        <ListView x:Name="ListViewSugestoes"
+                  Grid.Row="4" 
+                  HasUnevenRows="True" 
+                  RowHeight="65" 
+                  ItemsSource="{Binding ListaSugestao}"
+                  CachingStrategy="RecycleElement" 
+                  Header="i" 
+                  SeparatorVisibility="None" 
+                  VerticalOptions="Start" 
+                  Margin="0,0,0,5"
+                  ItemSelected="ListViewSugestoes_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <SwipeView BackgroundColor="Transparent">
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem  Text="Excluir"  BackgroundColor="Red" Clicked="SwipeItemExcluir_Clicked"/>
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem  Text="Editar"  BackgroundColor="{DynamicResource Fundo}" Clicked="SwipeItemEditar_Clicked"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            
+                            <Grid RowSpacing="0" Margin="30,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label  HorizontalTextAlignment="Start" 
+                                    Margin="5,0,0,0" 
+                                    FontSize="12" 
+                                    FontAttributes="Bold">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{Binding Sugestao.Departamento}"/>
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Frame Grid.Row="1"  
+                                   HeightRequest="65" 
+                                   CornerRadius="5" 
+                                   Padding="7" 
+                                   BackgroundColor="White">
+                                    <Grid RowSpacing="0" 
+                                      ColumnSpacing="10" 
+                                      VerticalOptions="Center">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="Label">
+                                                <Setter Property="TextColor" Value="Black"/>
+                                                <Setter Property="FontSize" Value="14"/>
+                                            </Style>
+                                        </Grid.Resources>
+
+                                        <BoxView Grid.RowSpan="2" 
+                                             CornerRadius="30"  
+                                             WidthRequest="4" 
+                                             VerticalOptions="FillAndExpand"                                          
+                                             HorizontalOptions="Start" >
+                                            <BoxView.Triggers>
+                                                <DataTrigger TargetType="BoxView" Binding="{Binding Sugestao.Status}" Value="0">
+                                                    <Setter Property="BackgroundColor" Value="Orange"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="BoxView" Binding="{Binding Sugestao.Status}" Value="1">
+                                                    <Setter Property="BackgroundColor" Value="ForestGreen"/>
+                                                    <Setter Property="Background" Value="ForestGreen"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="BoxView" Binding="{Binding Sugestao.Status}" Value="2">
+                                                    <Setter Property="BackgroundColor" Value="Red"/>
+                                                </DataTrigger>
+                                            </BoxView.Triggers>
+                                        </BoxView>
+
+                                        <Label Grid.Column="1">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Colab.: " FontAttributes="Bold"/>
+                                                        <Span Text="{Binding Sugestao.Colaborador}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label  Grid.Column="1" 
+                                            Grid.Row="1" 
+                                            Text="{Binding Sugestao.Sugestao }" 
+                                            MaxLines="2"  
+                                            LineBreakMode="TailTruncation"/>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </SwipeView>
+                       
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>
