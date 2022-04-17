@@ -45,14 +45,10 @@ namespace BDSuggestion.ViewModel
 
         public async void CarregarSugestaoGlobal()
         {
-            // Task.Run(async () =>
-            //{
-
-            //});
+          
             ListaSugestao.Clear();
             ListaDepart.Clear();
             Totais.GTotal = 0;
-
 
             /* uma lista de sugestões pré definidas. 
              * O que pode ser trocado por uma lista vinda de uma API
