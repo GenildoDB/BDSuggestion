@@ -73,5 +73,5 @@ App Xamarin Forms (ANDROID) versão 5.0.0.2401, Entity Framework versão 5.0.16 
  
   <div align="center" margin="30px">
   <h3>Sugestão outros </h3>
-  <img src="https://user-images.githubusercontent.com/34518271/163749384-cd87b9ed-959a-4843-8268-dc6bf5126721.png" height="800px"/>
+  <img src="https://user-images.githubusercontent.com/34518271/163749377-477f2523-ff9a-40a3-a73d-fc2f9e00284f.png" height="800px"/>
  </div>
