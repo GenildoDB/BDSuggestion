@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodel="clr-namespace:BDSuggestion.ViewModel" x:DataType="viewmodel:SugestaoAddViewModel"
-             x:Class="BDSuggestion.View.PageCadSugestao" Title="Sugestão" Background="White">
+             x:Class="BDSuggestion.View.PageCadSugestao" Title="Sugestão" Background="{DynamicResource Plano}" BackgroundColor="{DynamicResource Plano}">
     <ContentPage.Content>
         <ScrollView>
             <Grid Margin="30,15" >
@@ -11,6 +11,13 @@
                 </Grid.RowDefinitions>
                 <StackLayout>
                     <StackLayout.Resources>
+                        <Style TargetType="Frame">
+                            <Setter Property="Margin" Value="10,0"/>
+                            <Setter Property="HasShadow" Value="True"/>
+                            <Setter Property="CornerRadius" Value="15"/>
+                            <Setter Property="Padding" Value="10"/>
+                            <Setter Property="Background"  Value="White"/>
+                        </Style>
                         <Style TargetType="Label">
                             <Setter Property="Margin" Value="10,10,0,0"/>
                             <Setter Property="TextColor" Value="Black"/>
@@ -43,16 +50,14 @@
                     <Label x:Name="LblTitulo"
                            Text="Sugestão do&#10;colaborador" 
                            TextColor="{DynamicResource FundoDark}" 
-                           FontAttributes="Bold"  
+                           FontAttributes="Bold" 
+                           HorizontalOptions="Center"
                            FontSize="30" Margin="0,0,0,20" />
 
                     <Label Text="Seu nome"/>
                     <Frame x:Name="FrameColab"
-                           Padding="10,0" 
-                           HasShadow="False"
-                           HeightRequest="40" 
-                           CornerRadius="30" 
-                           BackgroundColor="{DynamicResource Plano}">
+                           Padding="10,3"
+                           HeightRequest="40" >
                         <Entry x:Name="EntryColab" WidthRequest="250" 
                        Text="{Binding Sugestao.Colaborador}"/>
                     </Frame>
@@ -66,19 +71,13 @@
                             ItemDisplayBinding="{Binding Nome}"/>
                     <Label Text="Sugestão"/>
                     <Frame x:Name="FrameSugs"
-                           Padding="10,5" 
-                           HasShadow="False"
-                           HeightRequest="100" 
-                           CornerRadius="15" 
+                           HeightRequest="100"
                            BackgroundColor="{DynamicResource Plano}">
                         <Editor x:Name="EditSugs" Text="{Binding Sugestao.Sugestao}"/>
                     </Frame>
                     <Label Text="Justificativa"/>
                     <Frame x:Name="FrameJust"
-                           Padding="10,5" 
-                           HasShadow="False"
                            HeightRequest="70" 
-                           CornerRadius="15" 
                            BackgroundColor="{DynamicResource Plano}">
                         <Editor x:Name="EditJust" Text="{Binding Sugestao.Justificativa}"/>
                     </Frame>
@@ -90,7 +89,7 @@
                         x:Name="BtnAdd"
                         VerticalOptions="End"
                         TextColor="White" 
-                        Margin="0,20,0,10"
+                        Margin="10,20,10,10"
                         BackgroundColor="{DynamicResource Fundo}"
                         Command="{Binding Add}" />
             </Grid>

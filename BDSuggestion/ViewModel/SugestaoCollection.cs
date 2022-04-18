@@ -83,7 +83,7 @@ namespace BDSuggestion.ViewModel
                            Justificativa = "Almoxarifado muito desorganizado!",
                            Id = 9999,
                            Status = 1,
-                           Departamento = "Almaxarifado"
+                           Departamento = "Almoxarifado"
                        },
                        Departamento = new Models.Departamentos()
                        {
@@ -119,7 +119,7 @@ namespace BDSuggestion.ViewModel
                            Justificativa = "Nenhum",
                            Id = 9999,
                            Status = 0,
-                           Departamento = "Almaxarifado"
+                           Departamento = "Almoxarifado"
                        },
                        Departamento = new Models.Departamentos()
                        {

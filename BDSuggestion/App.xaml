@@ -11,7 +11,7 @@
             <Color x:Key="colorAccent2">#e6f6fc</Color>
             <Color x:Key="colorAccent3">#ffab40</Color>
             <Color x:Key="colorAccent4">#ff9100</Color>
-            <Color x:Key="Plano">#EEF0F1</Color>
+            <Color x:Key="Plano">#f0f4f8</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

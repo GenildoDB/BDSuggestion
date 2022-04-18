@@ -141,7 +141,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid RowSpacing="0" Margin="30,10">
+                        <Grid RowSpacing="0" Margin="30,3">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="*"/>
@@ -161,7 +161,9 @@
                             <Frame Grid.Row="1"  
                                    HeightRequest="65" 
                                    CornerRadius="5" 
-                                   Padding="7" 
+                                   Padding="7"
+                                   HasShadow="True"
+                                   Margin="10"
                                    BackgroundColor="White">
                                 <Grid RowSpacing="0" 
                                       ColumnSpacing="10" 
