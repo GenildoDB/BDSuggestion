@@ -19,7 +19,7 @@ namespace BDSuggestion.View
         private SugestaoCollection Collection;
         public PageListSugestao()
         {
-            Collection = new SugestaoCollection(true);
+            Collection = new SugestaoCollection(true, false);
             InitializeComponent();
             BindingContext = Collection;
         }
@@ -27,7 +27,7 @@ namespace BDSuggestion.View
         protected override void OnAppearing()
         {
             base.OnAppearing();
-           
+           Collection.CarregarSugestaoGlobal();
         }
 
         /// <summary>
